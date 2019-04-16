@@ -21,10 +21,6 @@ $container->set(UserRepository::class, function() {
     return new UserRepository();
 });
 
-$userController = new UserController(
-    $container->get(TagRepository::class),
-    $container->get(UserRepository::class),
-    $container->get(LeadRepository::class)
-);
-
+/** @var UserController $userController */
+$userController = $container->get(UserController::class);
 $userController->index();
